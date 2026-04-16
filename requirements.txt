@@ -1,0 +1,4 @@
+pandas
+google-adk
+google-auth
+db-dtypes
