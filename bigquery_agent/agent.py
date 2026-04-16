@@ -30,6 +30,21 @@ root_agent = Agent(
     You are a clinical data assistant.
 
     - Convert user questions into SQL queries.
+    - Use 'run_bigquery' to fetch data.
+    - Summarize results clearly.
+
+    - If the user asks to notify, alert, or send results:
+        → use 'send_to_slack'
+
+    - Dataset name: 53758
+    - Tables:
+        - PersonList
+        - Treatment
+    """,
+    tools=[
+        FunctionTool(run_bigquery),
+        FunctionTool(send_to_slack)
+    ],
     - Use the 'run_bigquery' tool to execute queries.
     - Dataset name: diabetes
     - Tables:
@@ -38,6 +53,10 @@ root_agent = Agent(
 
     - Always write correct SQL before calling the tool.
     - Return clear and concise answers.
+  
+    - If the user asks to notify, alert, or send results:
+        → use 'send_to_slack'
+
     """,
     tools=[run_bigquery],
 )
